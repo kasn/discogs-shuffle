@@ -21,6 +21,10 @@ importers:
       vite:
         specifier: npm:rolldown-vite@7.2.5
         version: rolldown-vite@7.2.5
+    optionalDependencies:
+      '@rollup/rollup-linux-x64-gnu':
+        specifier: '*'
+        version: 4.55.1
 
 packages:
 
@@ -132,6 +136,11 @@ packages:
 
   '@rolldown/pluginutils@1.0.0-beta.50':
     resolution: {integrity: sha512-5e76wQiQVeL1ICOZVUg4LSOVYg9jyhGCin+icYozhsUzM+fHE7kddi1bdiE0jwVqTfkjba3jUFbEkoC9WkdvyA==}
+
+  '@rollup/rollup-linux-x64-gnu@4.55.1':
+    resolution: {integrity: sha512-a8G4wiQxQG2BAvo+gU6XrReRRqj+pLS2NGXKm8io19goR+K8lw269eTrPkSdDTALwMmJp4th2Uh0D8J9bEV1vg==}
+    cpu: [x64]
+    os: [linux]
 
   '@tybys/wasm-util@0.10.1':
     resolution: {integrity: sha512-9tTaPJLSiejZKx+Bmog4uSubteqTvFrVrURwkmHixBo0G4seD0zUxp98E1DzUBJxLQ3NPwXrGKDiVjwx/DpPsg==}
@@ -404,6 +413,9 @@ snapshots:
     optional: true
 
   '@rolldown/pluginutils@1.0.0-beta.50': {}
+
+  '@rollup/rollup-linux-x64-gnu@4.55.1':
+    optional: true
 
   '@tybys/wasm-util@0.10.1':
     dependencies:
