@@ -5,10 +5,9 @@ import {
   type GetReleasesResponse,
 } from "@lionralfs/discogs-client";
 
-const user = "kasn";
-
 const client = new DiscogsClient({ userAgent: "DiscogsShuffle/1.0" });
 
+const userName = document.querySelector<HTMLInputElement>("#username")!;
 const output = document.querySelector<HTMLDivElement>("#output")!;
 const shuffle = document.querySelector<HTMLDivElement>("#shuffle")!;
 const clearCache = document.querySelector<HTMLDivElement>("#clear")!;
@@ -16,7 +15,7 @@ const clearCache = document.querySelector<HTMLDivElement>("#clear")!;
 type TReleases = Pick<GetReleasesResponse, "releases">["releases"];
 type TRelease = TReleases[number];
 
-async function loadFromDiscogs(): Promise<TReleases> {
+async function loadFromDiscogs(user: string): Promise<TReleases> {
   const collection = client.user().collection();
 
   let results: TReleases = [];
@@ -28,6 +27,7 @@ async function loadFromDiscogs(): Promise<TReleases> {
       page: page,
       per_page: 100,
     });
+
     totalPages = response.data.pagination.pages;
     page++;
     results = [...results, ...response.data.releases];
@@ -36,14 +36,16 @@ async function loadFromDiscogs(): Promise<TReleases> {
   return results;
 }
 
-async function getCollection(): Promise<TReleases> {
-  if (localStorage.getItem("releases")) {
-    return JSON.parse(localStorage.getItem("releases")!);
+async function getCollection(user: string): Promise<TReleases> {
+  const localStorageKey = `releases_${user}`;
+
+  if (localStorage.getItem(localStorageKey)) {
+    return JSON.parse(localStorage.getItem(localStorageKey)!);
   }
 
-  const releases = await loadFromDiscogs();
+  const releases = await loadFromDiscogs(user);
 
-  localStorage.setItem("releases", JSON.stringify(releases));
+  localStorage.setItem(localStorageKey, JSON.stringify(releases));
 
   return releases;
 }
@@ -59,7 +61,17 @@ function getTitle(release: TRelease): string {
 }
 
 shuffle.addEventListener("click", async () => {
-  const releases = await getCollection();
+  const user = userName.value || "kasn";
+
+  let releases: TReleases;
+
+  try {
+    releases = await getCollection(user);
+  } catch (error) {
+    output.innerHTML =
+      "Error loading collection. Please check the username or switch your collection to public ";
+    return;
+  }
 
   const listenNow = releases[Math.floor(Math.random() * releases.length)];
 
