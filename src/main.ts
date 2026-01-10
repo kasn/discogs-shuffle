@@ -7,10 +7,10 @@ import {
 
 const client = new DiscogsClient({ userAgent: "DiscogsShuffle/1.0" });
 
-const userName = document.querySelector<HTMLInputElement>("#username")!;
-const output = document.querySelector<HTMLDivElement>("#output")!;
-const shuffle = document.querySelector<HTMLDivElement>("#shuffle")!;
-const clearCache = document.querySelector<HTMLDivElement>("#clear")!;
+const userNameInput = document.querySelector<HTMLInputElement>("#username")!;
+const outputElement = document.querySelector<HTMLDivElement>("#output")!;
+const shuffleButton = document.querySelector<HTMLDivElement>("#shuffle")!;
+const clearCacheButton = document.querySelector<HTMLDivElement>("#clear")!;
 
 type TReleases = Pick<GetReleasesResponse, "releases">["releases"];
 type TRelease = TReleases[number];
@@ -60,31 +60,66 @@ function getTitle(release: TRelease): string {
   return release.basic_information.title;
 }
 
-shuffle.addEventListener("click", async () => {
-  const user = userName.value || "kasn";
+function render(html: string) {
+  outputElement.innerHTML = html;
+}
 
+async function shuffle(user: string) {
   let releases: TReleases;
 
   try {
     releases = await getCollection(user);
   } catch (error) {
-    output.innerHTML =
-      "Error loading collection. Please check the username or switch your collection to public ";
+    render(
+      "Error loading collection. Please check the username or switch your collection to public "
+    );
     return;
   }
 
   const listenNow = releases[Math.floor(Math.random() * releases.length)];
 
-  output.innerHTML = `
+  render(`
     <img src="${listenNow.basic_information.cover_image}" alt="${getTitle(
     listenNow
   )} cover image"/>
     <h1>${getTitle(listenNow)}</h1>
     <h2>${getArtist(listenNow)}</h2>    
-  `;
+  `);
+}
+
+shuffleButton.addEventListener("click", async () => {
+  const user = userNameInput.value || "";
+
+  if (!user) {
+    render("Please enter a username");
+    return;
+  }
+
+  localStorage.setItem("username", user);
+
+  render("Loading collection...");
+
+  shuffle(user);
 });
 
-clearCache.addEventListener("click", () => {
+clearCacheButton.addEventListener("click", () => {
   localStorage.removeItem("releases");
-  output.innerHTML = "Cache cleared";
+  localStorage.removeItem("username");
+  userNameInput.value = "";
+  render("Cache cleared");
 });
+
+function init() {
+  const savedUser = localStorage.getItem("username");
+  if (savedUser !== null) {
+    userNameInput.value = savedUser;
+
+    render("Loading collection...");
+
+    shuffle(savedUser);
+    return;
+  }
+  render("Enter your Discogs username and click Shuffle!");
+}
+
+init();
