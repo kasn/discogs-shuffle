@@ -79,11 +79,15 @@ async function shuffle(user: string) {
   const listenNow = releases[Math.floor(Math.random() * releases.length)];
 
   render(`
-    <img src="${listenNow.basic_information.cover_image}" alt="${getTitle(
+    <div class="release">
+      <div class="cover-image">
+      <img src="${listenNow.basic_information.cover_image}" alt="${getTitle(
     listenNow
   )} cover image"/>
-    <h1>${getTitle(listenNow)}</h1>
-    <h2>${getArtist(listenNow)}</h2>    
+      </div>
+      <h1>${getTitle(listenNow)}</h1>
+      <h2>${getArtist(listenNow)}</h2>    
+    </div>
   `);
 }
 

@@ -31,8 +31,12 @@ body {
 }
 
 h1 {
+  max-width: 600px;
   font-size: 3.2em;
   line-height: 1.1;
+  overflow-wrap: break-word;
+  word-break: break-word; /* extra fallback for some edge cases */
+  hyphens: auto;
 }
 
 #app {
@@ -60,6 +64,20 @@ button:hover {
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
+}
+
+menu {
+  padding-left: 0;
+}
+
+.release {
+  .cover-image {
+    display: flex;
+    place-items: center;
+    justify-content: center;
+    width: 600px;
+    height: 600px;
+  }
 }
 
 @media (prefers-color-scheme: light) {
