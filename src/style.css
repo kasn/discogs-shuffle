@@ -3,9 +3,12 @@
   line-height: 1.5;
   font-weight: 400;
 
+  --color: light-dark(#213547, rgba(255, 255, 255, 0.87));
+  --background-color: light-dark(#f9f9f9, #1a1a1a);
+  --separator-color: light-dark(#1a1a1a, #f9f9f9);
+
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  background-color: var(--background-color);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -17,9 +20,10 @@ a {
   font-weight: 500;
   color: #646cff;
   text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+
+  &:hover {
+    color: #535bf2;
+  }
 }
 
 body {
@@ -31,9 +35,21 @@ body {
 }
 
 h1 {
+  font-size: 3.5em;
+  margin-top: 0;
+}
+
+h2 {
+  margin-bottom: 0;
+  border-bottom: var(--separator-color) solid 1px;
+  display: inline-block;
+}
+
+h1,
+h2 {
+  font-family: Charter, "Bitstream Charter", Cambria, Georgia, serif;
   max-width: 600px;
-  font-size: 3.2em;
-  line-height: 1.1;
+  line-height: 1.4;
   overflow-wrap: break-word;
   word-break: break-word; /* extra fallback for some edge cases */
   hyphens: auto;
@@ -54,20 +70,33 @@ input {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
+  background-color: var(--background-color);
   cursor: pointer;
   transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+
+  &:hover {
+    border-color: #646cff;
+  }
+
+  &:focus,
+  &:focus-visible {
+    outline: 4px auto -webkit-focus-ring-color;
+  }
 }
 
 menu {
   padding-left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+
+  .emoji {
+    font-size: 1.5em;
+  }
+}
+
+#outlet {
+  margin-bottom: 2em;
 }
 
 .release {
@@ -82,14 +111,9 @@ menu {
 
 @media (prefers-color-scheme: light) {
   :root {
-    color: #213547;
     background-color: #ffffff;
   }
   a:hover {
     color: #747bff;
-  }
-  button,
-  input {
-    background-color: #f9f9f9;
   }
 }

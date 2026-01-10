@@ -5,10 +5,10 @@ import {
   type GetReleasesResponse,
 } from "@lionralfs/discogs-client";
 
-const client = new DiscogsClient({ userAgent: "DiscogsShuffle/1.0" });
+const client = new DiscogsClient({ userAgent: "KasnDiscogsShuffle/1.0" });
 
 const userNameInput = document.querySelector<HTMLInputElement>("#username")!;
-const outputElement = document.querySelector<HTMLDivElement>("#output")!;
+const outletElement = document.querySelector<HTMLDivElement>("#outlet")!;
 const shuffleButton = document.querySelector<HTMLDivElement>("#shuffle")!;
 const clearCacheButton = document.querySelector<HTMLDivElement>("#clear")!;
 
@@ -61,7 +61,7 @@ function getTitle(release: TRelease): string {
 }
 
 function render(html: string) {
-  outputElement.innerHTML = html;
+  outletElement.innerHTML = html;
 }
 
 async function shuffle(user: string) {
@@ -85,8 +85,8 @@ async function shuffle(user: string) {
     listenNow
   )} cover image"/>
       </div>
-      <h1>${getTitle(listenNow)}</h1>
-      <h2>${getArtist(listenNow)}</h2>    
+      <h2>${getArtist(listenNow)}</h2>            
+      <h1>${getTitle(listenNow)}</h1>      
     </div>
   `);
 }
