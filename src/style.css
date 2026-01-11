@@ -6,6 +6,8 @@
   --color: light-dark(#213547, rgba(255, 255, 255, 0.87));
   --background-color: light-dark(#f9f9f9, #1a1a1a);
   --separator-color: light-dark(#1a1a1a, #f9f9f9);
+  --link-color: #646cff;
+  --link-hover-color: light-dark(#535bf2, #747bff);
 
   color-scheme: light dark;
   background-color: var(--background-color);
@@ -18,11 +20,11 @@
 
 a {
   font-weight: 500;
-  color: #646cff;
+  color: var(--link-color);
   text-decoration: inherit;
 
   &:hover {
-    color: #535bf2;
+    color: var(--link-hover-color);
   }
 }
 
@@ -91,7 +93,7 @@ menu {
   justify-content: space-evenly;
 
   .emoji {
-    font-size: 1.5em;
+    font-size: 2em;
   }
 }
 
@@ -106,14 +108,5 @@ menu {
     justify-content: center;
     width: 600px;
     height: 600px;
-  }
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
   }
 }
