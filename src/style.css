@@ -4,7 +4,8 @@
   font-weight: 400;
 
   --color: light-dark(#213547, rgba(255, 255, 255, 0.87));
-  --background-color: light-dark(#f9f9f9, #1a1a1a);
+  --background-color: light-dark(#ffffff, #242424);
+  --button-background-color: light-dark(#f9f9f9, #1a1a1a);
   --separator-color: light-dark(#1a1a1a, #f9f9f9);
   --link-color: #646cff;
   --link-hover-color: light-dark(#535bf2, #747bff);
@@ -31,38 +32,23 @@ a {
 body {
   margin: 0;
   display: flex;
-  place-items: center;
   min-width: 320px;
   min-height: 100vh;
 }
 
-h1 {
-  font-size: 3.5em;
-  margin-top: 0;
-}
-
-h2 {
-  margin-bottom: 0;
-  border-bottom: var(--separator-color) solid 1px;
-  display: inline-block;
-}
-
-h1,
-h2 {
-  font-family: Charter, "Bitstream Charter", Cambria, Georgia, serif;
-  max-width: 600px;
-  line-height: 1.4;
-  overflow-wrap: break-word;
-  word-break: break-word; /* extra fallback for some edge cases */
-  hyphens: auto;
-}
-
-#app {
+div.main {
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  flex-direction: column;
+  display: flex;
+  justify-content: space-between;
 }
+
+/* #app {
+
+} */
 
 button,
 input {
@@ -72,9 +58,11 @@ input {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: var(--background-color);
+  background-color: var(--button-background-color);
   cursor: pointer;
   transition: border-color 0.25s;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px,
+    rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
 
   &:hover {
     border-color: #646cff;
@@ -86,19 +74,20 @@ input {
   }
 }
 
-menu {
-  padding-left: 0;
+header {
   display: flex;
   align-items: center;
   justify-content: space-evenly;
+  margin-bottom: 2em;
 
   .emoji {
     font-size: 2em;
   }
 }
 
-#outlet {
+main#outlet {
   margin-bottom: 2em;
+  text-align: center;
 }
 
 .release {
@@ -108,5 +97,27 @@ menu {
     justify-content: center;
     width: 600px;
     height: 600px;
+    margin-bottom: 2em;
+  }
+
+  h1 {
+    font-size: 3.5em;
+    margin: 0;
+  }
+
+  h2 {
+    margin-top: 0;
+    border-bottom: var(--separator-color) solid 1px;
+    display: inline-block;
+  }
+
+  h1,
+  h2 {
+    font-family: Charter, "Bitstream Charter", Cambria, Georgia, serif;
+    max-width: 600px;
+    line-height: 1.4;
+    overflow-wrap: break-word;
+    word-break: break-word; /* extra fallback for some edge cases */
+    hyphens: auto;
   }
 }
