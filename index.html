@@ -10,8 +10,10 @@
     <div class="main">
       <header>
         <span class="emoji">🎧🔀</span>
-        <input type="text" id="username" placeholder="Discogs Username" />
-        <button type="button" id="shuffle">🔀 Shuffle</button>
+        <form id="shuffle-form">
+          <input type="text" id="username" placeholder="Discogs Username" />
+          <button type="submit">🔀 Shuffle</button>
+        </form>
         <button type="button" id="clear">clear cache</button>
       </header>
       <main id="outlet"></main>

@@ -9,7 +9,7 @@ const client = new DiscogsClient({ userAgent: "KasnDiscogsShuffle/1.0" });
 
 const userNameInput = document.querySelector<HTMLInputElement>("#username")!;
 const outletElement = document.querySelector<HTMLDivElement>("#outlet")!;
-const shuffleButton = document.querySelector<HTMLDivElement>("#shuffle")!;
+const shuffleForm = document.querySelector<HTMLFormElement>("#shuffle-form")!;
 const clearCacheButton = document.querySelector<HTMLDivElement>("#clear")!;
 
 type TReleases = Pick<GetReleasesResponse, "releases">["releases"];
@@ -91,7 +91,8 @@ async function shuffle(user: string) {
   `);
 }
 
-shuffleButton.addEventListener("click", async () => {
+shuffleForm.addEventListener("submit", async (event) => {
+  event.preventDefault();
   const user = userNameInput.value || "";
 
   if (!user) {
