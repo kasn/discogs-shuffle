@@ -1,9 +1,10 @@
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+  --font-serif: "Charter", "Bitstream Charter", Cambria, Georgia, serif;
+  --font-sans: system-ui, Avenir, Helvetica, Arial, sans-serif;
 
-  --color: light-dark(#213547, rgba(255, 255, 255, 0.87));
+  font-family: var(--font-sans);
+
+  --color: light-dark(#213547, rgb(255 255 255 / 0.87));
   --background-color: light-dark(#ffffff, #242424);
   --button-background-color: light-dark(#f9f9f9, #1a1a1a);
   --separator-color: light-dark(#1a1a1a, #f9f9f9);
@@ -12,7 +13,8 @@
 
   color-scheme: light dark;
   background-color: var(--background-color);
-
+  line-height: 1.5;
+  font-weight: 400;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -46,10 +48,6 @@ div.main {
   justify-content: space-between;
 }
 
-/* #app {
-
-} */
-
 button,
 input {
   border-radius: 8px;
@@ -61,8 +59,8 @@ input {
   background-color: var(--button-background-color);
   cursor: pointer;
   transition: border-color 0.25s;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px,
-    rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+  box-shadow: rgb(0 0 0 / 0.1) 0px 1px 3px 0px,
+    rgb(0 0 0 / 0.06) 0px 1px 2px 0px;
 
   &:hover {
     border-color: #646cff;
@@ -72,16 +70,25 @@ input {
   &:focus-visible {
     outline: 4px auto -webkit-focus-ring-color;
   }
+
+  span {
+    font-size: 0.8em;
+  }
 }
 
 header {
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: space-between;
   margin-bottom: 2em;
 
   .emoji {
     font-size: 2em;
+  }
+
+  form {
+    display: flex;
+    gap: 0.5em;
   }
 }
 
@@ -113,7 +120,7 @@ main#outlet {
 
   h1,
   h2 {
-    font-family: Charter, "Bitstream Charter", Cambria, Georgia, serif;
+    font-family: var(--font-serif);
     max-width: 600px;
     line-height: 1.4;
     overflow-wrap: break-word;

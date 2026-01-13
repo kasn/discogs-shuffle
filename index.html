@@ -10,11 +10,10 @@
     <div class="main">
       <header>
         <span class="emoji">🎧🔀</span>
-        <form id="shuffle-form">
+        <form id="shuffle-form" onsubmit="return false;">
           <input type="text" id="username" placeholder="Discogs Username" />
-          <button type="submit">🔀 Shuffle</button>
+          <button type="submit"><span>🔀</span> Shuffle</button>
         </form>
-        <button type="button" id="clear">clear cache</button>
       </header>
       <main id="outlet"></main>
       <footer>
@@ -37,6 +36,8 @@
             rel="noopener noreferrer"
             >discogs</a
           >
+          ·
+          <a href="#" id="clear">clear cache</a>
         </p>
       </footer>
     </div>
