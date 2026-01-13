@@ -4,12 +4,15 @@
 
   font-family: var(--font-sans);
 
-  --color: light-dark(#213547, rgb(255 255 255 / 0.87));
+  --color: light-dark(#213547, rgba(255, 255, 255, 0.87));
   --background-color: light-dark(#ffffff, #242424);
   --button-background-color: light-dark(#f9f9f9, #1a1a1a);
   --separator-color: light-dark(#1a1a1a, #f9f9f9);
-  --link-color: #646cff;
-  --link-hover-color: light-dark(#535bf2, #747bff);
+  --highlight-color: hsl(120, 63%, 45%);
+  --highlight-hover: light-dark(
+    hsl(from var(--highlight-color) h s 25%),
+    hsl(from var(--highlight-color) h s 55%)
+  );
 
   color-scheme: light dark;
   background-color: var(--background-color);
@@ -23,11 +26,11 @@
 
 a {
   font-weight: 500;
-  color: var(--link-color);
+  color: var(--highlight-color);
   text-decoration: inherit;
 
   &:hover {
-    color: var(--link-hover-color);
+    color: var(--highlight-hover);
   }
 }
 
@@ -63,7 +66,7 @@ input {
     rgb(0 0 0 / 0.06) 0px 1px 2px 0px;
 
   &:hover {
-    border-color: #646cff;
+    border-color: var(--highlight-color);
   }
 
   &:focus,
