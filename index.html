@@ -1,46 +1,55 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>discogs-shuffle</title>
-  </head>
-  <body>
-    <div class="main">
-      <header>
-        <span class="emoji">🎧🔀</span>
-        <form id="shuffle-form" onsubmit="return false;">
-          <input type="text" id="username" placeholder="Discogs Username" />
-          <button type="submit"><span>🔀</span> Shuffle</button>
-        </form>
-      </header>
-      <main id="outlet"></main>
-      <footer>
-        <p>
-          Made by
-          <a href="https://kasn.dev" target="_blank" rel="noopener noreferrer"
-            >kasn</a
-          >
-          ·
-          <a
-            href="https://github.com/kasn/discogs-shuffle"
-            target="_blank"
-            rel="noopener noreferrer"
-            >source code</a
-          >
-          ·
-          <a
-            href="https://discogs.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            >discogs</a
-          >
-          ·
-          <a href="#" id="clear">clear cache</a>
-        </p>
-      </footer>
-    </div>
-    <script type="module" src="/src/main.ts"></script>
-  </body>
+    <head>
+        <meta charset="UTF-8" />
+        <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>discogs-shuffle</title>
+    </head>
+    <body>
+        <div class="main">
+            <header>
+                <span class="emoji">🎧🔀</span>
+                <form id="shuffle-form" onsubmit="return false;">
+                    <input
+                        type="text"
+                        id="username"
+                        placeholder="Discogs Username"
+                    />
+                    <button type="submit">
+                        <span class="icon">🔀</span> Shuffle
+                    </button>
+                </form>
+            </header>
+            <main id="outlet"></main>
+            <footer>
+                <p>
+                    Made by
+                    <a
+                        href="https://kasn.dev"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        >kasn</a
+                    >
+                    ·
+                    <a
+                        href="https://github.com/kasn/discogs-shuffle"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        >source code</a
+                    >
+                    ·
+                    <a
+                        href="https://discogs.com"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        >discogs</a
+                    >
+                    ·
+                    <a href="#" id="clear">clear cache</a>
+                </p>
+            </footer>
+        </div>
+        <script type="module" src="/src/main.ts"></script>
+    </body>
 </html>
