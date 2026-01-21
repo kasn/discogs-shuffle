@@ -68,6 +68,22 @@ h6 {
 
     font-family: var(--font-sans);
 
+    --bg-dark: light-dark(oklch(0.92 0.005 156), oklch(0.1 0.005 156));
+    --bg: light-dark(oklch(0.96 0.005 156), oklch(0.15 0.005 156));
+    --bg-light: light-dark(oklch(1 0.005 156), oklch(0.2 0.005 156));
+    --text: light-dark(oklch(0.15 0.01 156), oklch(0.96 0.01 156));
+    --text-muted: light-dark(oklch(0.4 0.01 156), oklch(0.76 0.01 156));
+    --highlight: light-dark(oklch(1 0.01 156), oklch(0.5 0.01 156));
+    --border: light-dark(oklch(0.6 0.01 156), oklch(0.4 0.01 156));
+    --border-muted: light-dark(oklch(0.7 0.01 156), oklch(0.3 0.01 156));
+    --primary: light-dark(oklch(0.4 0.1 156), oklch(0.76 0.1 156));
+    --secondary: light-dark(oklch(0.4 0.1 336), oklch(0.76 0.1 336));
+    --shadow: 0px 2px 2px oklch(0 0 0 / 0.2), 0px 4px 4px oklch(0 0 0 / 0.1);
+    --gradient: linear-gradient(0deg, var(--bg) 97%, var(--bg-light));
+    --gradient-hover: linear-gradient(0deg, var(--bg), var(--bg-light));
+    --border-card: solid 1px var(--border-muted);
+    /*
+
     --color: light-dark(#213547, rgba(255, 255, 255, 0.87));
     --background-color: light-dark(#ffffff, #242424);
     --button-background-color: light-dark(#f9f9f9, #1a1a1a);
@@ -76,10 +92,10 @@ h6 {
     --highlight-hover: light-dark(
         hsl(from var(--highlight-color) h s 25%),
         hsl(from var(--highlight-color) h s 55%)
-    );
+    );*/
 
     color-scheme: light dark;
-    background-color: var(--background-color);
+    background-color: var(--bg-dark);
     line-height: 1.5;
     font-weight: 400;
     font-synthesis: none;
@@ -90,12 +106,12 @@ h6 {
 
 a {
     font-weight: 500;
-    color: var(--highlight-color);
+    color: var(--text-muted);
     text-decoration: inherit;
 
-    &:hover {
+    /*&:hover {
         color: var(--highlight-hover);
-    }
+    }*/
 }
 
 body {
@@ -106,9 +122,9 @@ body {
 }
 
 div.main {
-    max-width: 1280px;
+    width: min(600px, 100%);
     margin: 0 auto;
-    padding: 2rem;
+    padding: 1rem 2rem;
     text-align: center;
     flex-direction: column;
     display: flex;
@@ -117,22 +133,16 @@ div.main {
 
 button,
 input {
+    border: var(--border-card);
     border-radius: 8px;
-    border: 1px solid transparent;
     padding: 0.6em 1.2em;
     font-size: 1em;
     font-weight: 500;
     font-family: inherit;
-    background-color: var(--button-background-color);
+    background-color: var(--bg-light);
     cursor: pointer;
     transition: border-color 0.25s;
-    box-shadow:
-        rgb(0 0 0 / 0.1) 0px 1px 3px 0px,
-        rgb(0 0 0 / 0.06) 0px 1px 2px 0px;
-
-    &:hover {
-        border-color: var(--highlight-color);
-    }
+    box-shadow: var(--shadow);
 
     &:focus,
     &:focus-visible {
@@ -145,10 +155,15 @@ input {
 }
 
 header {
+    border-radius: 10;
+    box-shadow: var(--shadow);
+    background-color: var(--bg);
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 2em;
+    margin-bottom: 1rem;
+    padding: 1rem 2rem;
+    border-radius: 1rem;
 
     .emoji {
         font-size: 2em;
@@ -159,16 +174,12 @@ header {
         gap: 0.5em;
     }
 
-    @media (max-width: 525px) {
+    @media (max-width: 590px) {
         align-items: flex-end;
         flex-direction: column;
-
-        /*.icon {
-            display: none;
-        }*/
     }
 
-    @media (max-width: 450px) {
+    @media (max-width: 490px) {
         .icon {
             display: none;
         }
@@ -188,19 +199,21 @@ main#outlet {
         max-width: 600px;
         margin-bottom: 2em;
 
-        /*img {
-            max-height: 600px;
-        }*/
+        img {
+            box-shadow: var(--shadow);
+        }
     }
 
     h1 {
+        color: var(--text);
         font-size: 3.5em;
         margin: 0;
     }
 
     h2 {
+        color: var(--text);
         margin-top: 0;
-        border-bottom: var(--separator-color) solid 1px;
+        border-bottom: var(--border-muted) solid 1px;
         display: inline-block;
     }
 

@@ -71,7 +71,7 @@ async function shuffle(user: string) {
     releases = await getCollection(user);
   } catch (error) {
     render(
-      "Error loading collection. Please check the username or switch your collection to public "
+      "Error loading collection. Please check the username or switch your collection to public ",
     );
     return;
   }
@@ -82,11 +82,11 @@ async function shuffle(user: string) {
     <div class="release">
       <div class="cover-image">
       <img src="${listenNow.basic_information.cover_image}" alt="${getTitle(
-    listenNow
-  )} cover image"/>
+        listenNow,
+      )} cover image"/>
       </div>
-      <h2>${getArtist(listenNow)}</h2>            
-      <h1>${getTitle(listenNow)}</h1>      
+      <h2>${getArtist(listenNow)}</h2>
+      <h1>${getTitle(listenNow)}</h1>
     </div>
   `);
 }
