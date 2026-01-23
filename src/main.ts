@@ -7,7 +7,7 @@ import {
 
 const client = new DiscogsClient({ userAgent: "KasnDiscogsShuffle/1.0" });
 
-const userNameInput = document.querySelector<HTMLInputElement>("#username")!;
+const userNameInput = document.querySelector<HTMLInputElement>("#discogsUser")!;
 const outletElement = document.querySelector<HTMLDivElement>("#outlet")!;
 const shuffleForm = document.querySelector<HTMLFormElement>("#shuffle-form")!;
 const clearCacheButton = document.querySelector<HTMLDivElement>("#clear")!;
