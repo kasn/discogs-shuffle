@@ -2,6 +2,7 @@ import "./style.css";
 
 import {
   DiscogsClient,
+  type BasicReleaseInfo,
   type GetReleasesResponse,
 } from "@lionralfs/discogs-client";
 
@@ -52,7 +53,7 @@ async function getCollection(user: string): Promise<TReleases> {
 
 function getArtist(release: TRelease): string {
   return release.basic_information.artists
-    .map((artist: any) => artist.name)
+    .map((artist: BasicReleaseInfo["artists"][number]) => artist.name)
     .join(", ");
 }
 

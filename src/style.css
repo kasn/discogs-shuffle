@@ -168,7 +168,7 @@ button::before {
     background: linear-gradient(
         to right,
         #ffffff00 0%,
-        var(--primary),
+        var(--border),
         #ffffff00 100%
     );
 
